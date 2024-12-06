@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "CARDBOARD.sln"
+    "dotnet.defaultSolution": "cardboard.sln"
 }
