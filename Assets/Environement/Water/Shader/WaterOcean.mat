@@ -128,7 +128,7 @@ Material:
     - _DetailPower: 0.1
     - _DistortionNoise: 0.5
     - _DistortionNoiseSize: 1
-    - _DistortionSpeed: 2
+    - _DistortionSpeed: 1
     - _DistortionStrength: 0.04
     - _DstBlend: 10
     - _DstBlendAlpha: 0
@@ -139,9 +139,12 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
+    - _NormalDistortionNoiseSize: 0.14
+    - _NormalDistortionSpeed: 0.5
+    - _NormalDistortionStrength: 0.31
     - _NormalSize: 3
     - _NormalSpeed: 0.05
-    - _NormalStrength: 0.1
+    - _NormalStrength: 0.09
     - _OcclusionStrength: 1
     - _OtherNormalSpeed: -0.03
     - _Parallax: 0.005
