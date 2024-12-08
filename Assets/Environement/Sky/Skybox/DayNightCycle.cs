@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class DayNightCycle : MonoBehaviour
 {
+
     [SerializeField] private Light sun;
+    public Renderer starsRenderer;
     [SerializeField, Range(0, 24)] private float timeOfDay;
-    [SerializeField] private float sunRotationSpeed;
+    [SerializeField] public float sunRotationSpeed;
 
     [Header("Lighting Presets")]
     [SerializeField] private Gradient skyColor;
     [SerializeField] private Gradient equatorColor;
     [SerializeField] private Gradient sunColor;
+    [SerializeField] public AnimationCurve starsCurve;
 
 
     private void Update()
@@ -42,5 +45,6 @@ public class DayNightCycle : MonoBehaviour
         RenderSettings.ambientEquatorColor = equatorColor.Evaluate(timeFraction);
         RenderSettings.ambientSkyColor = skyColor.Evaluate(timeFraction);
         sun.color = sunColor.Evaluate(timeFraction);
+        starsRenderer.sharedMaterial.SetFloat("_StarsAmount",starsCurve.Evaluate(timeOfDay));
     }
 }
