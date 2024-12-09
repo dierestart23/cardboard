@@ -12,9 +12,9 @@ public class PickUpScript : MonoBehaviour
     public float throwForce = 500f; //force at which the object is thrown at
     public float pickUpRange = 5f; //how far the player can pickup the object from
     private float rotationSensitivity = 1f; //how fast/slow the object is rotated in relation to mouse movement
-    private GameObject heldObj; //object which we pick up
+    public GameObject heldObj; //object which we pick up
     private Rigidbody heldObjRb; //rigidbody of object we pick up
-    private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
+    public bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
     private int LayerNumber; //layer index
 
     //Reference to script which includes mouse movement of player (looking around)
@@ -100,7 +100,7 @@ public class PickUpScript : MonoBehaviour
             Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
         }
     }
-    void DropObject()
+    public void DropObject()
     {
         //re-enable collision with player
         Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
@@ -108,6 +108,8 @@ public class PickUpScript : MonoBehaviour
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null; //unparent object
         heldObj = null; //undefine game object
+        player.lookSensitivity = 2;
+        weaponSway.swayMultiplier = -10;
     }
     void MoveObject()
     {
@@ -128,8 +130,8 @@ public class PickUpScript : MonoBehaviour
             float XaxisRotation = Input.GetAxis("Mouse Y") * rotationSensitivity;
             float YaxisRotation = Input.GetAxis("Mouse X") * rotationSensitivity;
             //rotate the object depending on mouse X-Y Axis
-            heldObj.transform.Rotate(Vector3.down, XaxisRotation);
-            heldObj.transform.Rotate(Vector3.right, YaxisRotation);
+            heldObj.transform.Rotate(Vector3.forward, -XaxisRotation);
+            heldObj.transform.Rotate(Vector3.down, YaxisRotation);
             weaponSway.swayMultiplier = 0;
         }
         else

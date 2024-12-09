@@ -30,6 +30,8 @@ public class CharacterController : MonoBehaviour
     private bool isGrounded;
     private bool canRun = true; // Determines if the player can run
 
+    public bool canMove = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -50,16 +52,24 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
-        RotatePlayer();
-        CheckGroundStatus();
+        if(canMove)
+        {
+            RotatePlayer();
+            CheckGroundStatus();
+        }
+        
         HandleStamina();
         HandleCameraFOV();
     }
 
     void FixedUpdate()
     {
-        MovePlayer();
-        Jump();
+        if(canMove)
+        {
+            MovePlayer();
+            Jump();
+        }
+        
     }
 
     void RotatePlayer()
@@ -135,7 +145,7 @@ public class CharacterController : MonoBehaviour
         Vector3 targetVelocity = new Vector3(moveHorizontal, 0, moveVertical);
         targetVelocity = transform.TransformDirection(targetVelocity);
 
-        if (Input.GetKey(KeyCode.LeftShift) && canRun && currentStamina > 0 && targetVelocity.sqrMagnitude > 0)
+        if (Input.GetKey(KeyCode.LeftShift) && canRun && currentStamina > 0 && targetVelocity.sqrMagnitude > 0 && canMove)
         {
             currentStamina -= staminaDrainRate * Time.deltaTime;
             if (currentStamina < 0)
@@ -168,7 +178,7 @@ public class CharacterController : MonoBehaviour
         Vector3 targetVelocity = new Vector3(moveHorizontal, 0, moveVertical);
         targetVelocity = transform.TransformDirection(targetVelocity);
 
-        if (Input.GetKey(KeyCode.LeftShift) && canRun && currentStamina > 0 && targetVelocity.sqrMagnitude > 0)
+        if (Input.GetKey(KeyCode.LeftShift) && canRun && currentStamina > 0 && targetVelocity.sqrMagnitude > 0 && canMove)
         {
             playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, runFOV, Time.deltaTime * fovTransitionSpeed);
         }
