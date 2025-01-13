@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc4adaefee31a453d9ecab77db425ad5, type: 3}
+  m_Name: DiabeteatsUserData
+  m_EditorClassIdentifier: 
+  userData:
+  - username: asterion le pedo
+    address: 3 Rue Prostipute
+    pfp: {fileID: 2800000, guid: b089b4ba0fad0427b8b7d5f18a537e0d, type: 3}
+  - username: Gabo
+    address: ????
+    pfp: {fileID: 2800000, guid: c4c2422a5583348aca4ca03c2e451516, type: 3}
+  - username: Jacqueline Moulin
+    address: 18 Chemin Fort
+    pfp: {fileID: 0}
+  - username: RofVince
+    address: bah chez lui ptdr
+    pfp: {fileID: 2800000, guid: f06b883e7834d4dd798929bad3137a90, type: 3}
+  - username: Freddythekiller
+    address: "3 Chemin de Cr\xEAt Forest"
+    pfp: {fileID: 2800000, guid: fed4d474acf5a4a12997ddfc67905d23, type: 3}
+  - username: user24819
+    address: En Belgique woulah
+    pfp: {fileID: 2800000, guid: 82f6fcba223ac43c6abbc351aff16270, type: 3}
+  - username: AFG662
+    address: j'me suis chier dessus
+    pfp: {fileID: 2800000, guid: 6de8d457157ae4314acb58ae6cb7cb7a, type: 3}

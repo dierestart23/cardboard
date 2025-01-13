@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DayNightCycle : MonoBehaviour
 {
     [SerializeField] private Light sun;
@@ -15,6 +16,14 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private Gradient equatorColor;
     [SerializeField] private Gradient sunColor;
     [SerializeField] public AnimationCurve starsCurve;
+
+    [Header("Moon Settings")]
+    [SerializeField] public Material moon;
+    [SerializeField] public AnimationCurve moonOpacity;
+    [SerializeField] public AnimationCurve moonIntensity;
+
+    [Header("Fog Settings")]
+    [SerializeField] public AnimationCurve fogDensity;
 
     private void Update()
     {
@@ -31,6 +40,8 @@ public class DayNightCycle : MonoBehaviour
 
         UpdateSunRotation();
         UpdateLighting();
+        UpdateMoon();
+        UpdateFog();
     }
 
     private void OnValidate()
@@ -52,5 +63,16 @@ public class DayNightCycle : MonoBehaviour
         RenderSettings.ambientSkyColor = skyColor.Evaluate(timeFraction);
         sun.color = sunColor.Evaluate(timeFraction);
         starsRenderer.sharedMaterial.SetFloat("_StarsAmount", starsCurve.Evaluate(timeOfDay));
+    }
+
+    private void UpdateMoon()
+    {
+        moon.SetColor("_EmissionColor", Color.white * moonIntensity.Evaluate(timeOfDay));
+        moon.color = new Color(moon.color.r, moon.color.g, moon.color.b, moonOpacity.Evaluate(timeOfDay));
+    }
+
+    private void UpdateFog()
+    {
+        RenderSettings.fogDensity = fogDensity.Evaluate(timeOfDay);
     }
 }
